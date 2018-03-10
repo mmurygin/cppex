@@ -3,7 +3,7 @@
 using namespace std;
 
 int ** transpose(const int * const * m, unsigned rows, unsigned cols) {
-    int ** result = create2dArray(cols, rows);
+    int ** result = create_array_2d(cols, rows);
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < cols; j++) {
             result[j][i] = m[i][j];
@@ -21,7 +21,7 @@ int main() {
     cout << "Insert columns number: ";
     cin >> cols;
 
-    int ** m = create2dArray(rows, cols);
+    int ** m = create_array_2d(rows, cols);
 
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < cols; j++) {
@@ -31,8 +31,8 @@ int main() {
 
     int **transposed = transpose(m, rows, cols);
     print2dArray(transposed, cols, rows);
-    delete2dArray(m);
-    delete2dArray(transposed);
+    delete_array_2d(m);
+    delete_array_2d(transposed);
 
     return 0;
 }

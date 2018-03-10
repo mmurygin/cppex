@@ -1,6 +1,6 @@
 #include <iostream>
 
-int **create2dArray(unsigned x, unsigned y)
+int **create_array_2d(unsigned x, unsigned y)
 {
     int **m = new int *[x];
     m[0] = new int[x * y];
@@ -13,7 +13,7 @@ int **create2dArray(unsigned x, unsigned y)
     return m;
 }
 
-void delete2dArray(int ** m)
+void delete_array_2d(int ** m)
 {
     delete [] m[0];
     delete [] m;
