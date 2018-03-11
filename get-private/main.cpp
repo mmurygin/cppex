@@ -27,41 +27,17 @@ struct ClsCopy
 
 char & get_c(Cls &cls)
 {
-    ClsCopy cls_copy = ClsCopy();
-    char * cls_copy_pointer = (char*)(void*)(&cls_copy);
-    char * cls_copy_field_pointer = &cls_copy.c;
-
-    long diff = cls_copy_field_pointer - cls_copy_pointer;
-
-    char * cls_field_pointer = (char*)(void*)(&cls) + diff;
-
-    return *cls_field_pointer;
+    return ((ClsCopy*)(&cls))->c;
 }
 
 double & get_d(Cls &cls)
 {
-    ClsCopy cls_copy = ClsCopy();
-    char *cls_copy_pointer = (char *)(void *)(&cls_copy);
-    char *cls_copy_field_pointer = (char*)&cls_copy.d;
-
-    long diff = cls_copy_field_pointer - cls_copy_pointer;
-
-    char *cls_field_pointer = (char *)(void *)(&cls) + diff;
-
-    return *(double*)cls_field_pointer;
+    return ((ClsCopy *)(&cls))->d;
 }
 
 int & get_i(Cls &cls)
 {
-    ClsCopy cls_copy = ClsCopy();
-    char *cls_copy_pointer = (char *)(void *)(&cls_copy);
-    char *cls_copy_field_pointer = (char*)&cls_copy.i;
-
-    long diff = cls_copy_field_pointer - cls_copy_pointer;
-
-    char *cls_field_pointer = (char *)(void *)(&cls) + diff;
-
-    return *(int*)cls_field_pointer;
+    return ((ClsCopy *)(&cls))->i;
 }
 
 int main() {
