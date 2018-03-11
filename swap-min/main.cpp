@@ -16,6 +16,7 @@ void delete_2d_array(int ** m, unsigned rows) {
         delete m[i];
     }
 
+    // cppcheck-suppress *
     delete m;
 }
 
