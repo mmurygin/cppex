@@ -1,8 +1,9 @@
 #include <cstring>
+#include <algorithm>
 #include <iostream>
 #include "str.h"
 
-String::String(const char * str)
+    String::String(const char *str)
 {
     this->size = strlen(str);
     this->str = new char[this->size + 1];
@@ -21,9 +22,29 @@ String::String(size_t n, char c)
     this->str[n] = '\0';
 }
 
+String::String(const String &other)
+{
+    this->size = other.size;
+    this->str = new char[this->size + 1];
+
+    for (unsigned i = 0; i <= other.size; i++) {
+        this->str[i] = other.str[i];
+    }
+}
+
 String::~String()
 {
     delete [] this->str;
+}
+
+String & String::operator=(const String &other) {
+    if (this != &other) {
+        String new_str(other);
+        std::swap(this->str, new_str.str);
+        std::swap(this->size, new_str.size);
+    }
+
+    return *this;
 }
 
 const void String::print() {

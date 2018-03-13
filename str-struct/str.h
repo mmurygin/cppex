@@ -6,6 +6,8 @@ struct String {
     explicit String(const char *str = "");
 
     String(size_t n, char c);
+    String(const String & other);
+    String & operator=(const String &other);
 
     ~String();
 

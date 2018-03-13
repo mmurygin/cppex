@@ -10,5 +10,12 @@ int main() {
     str.append(str2);
     str.print();
 
+    String str3 = String(str2);
+    str3.print();
+
+    String str4 = String();
+    str4 = str;
+    str4.print();
+
     return 0;
 }
