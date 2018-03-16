@@ -23,3 +23,9 @@ double BinaryOperation::evaluate() const {
             return 0.0;
     }
 }
+
+Expression const * BinaryOperation::get_left() const { return left_; }
+Expression const * BinaryOperation::get_right() const { return right_; }
+char BinaryOperation::get_op() const { return operand_; }
+
+void BinaryOperation::visit(Visitor *visitor) const { visitor->visitBinaryOperation(this); }
