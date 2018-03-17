@@ -6,7 +6,7 @@ double Number::evaluate() const {
     return value_;
 }
 
-void Number::visit(Visitor * visitor) const {
+void Number::visit(IVisitor * visitor) const {
     visitor->visitNumber(this);
 }
 

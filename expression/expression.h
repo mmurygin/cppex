@@ -1,9 +1,9 @@
 #pragma once
 
-struct Visitor;
+struct IVisitor;
 
-struct Expression {
+struct IExpression {
     virtual double evaluate() const = 0;
-    virtual void visit(Visitor * visitor) const = 0;
-    virtual ~Expression() {}
+    virtual void visit(IVisitor * visitor) const = 0;
+    virtual ~IExpression() {}
 };
