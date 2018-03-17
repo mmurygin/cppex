@@ -8,10 +8,11 @@ struct String {
     String(size_t n, char c);
     String(const String & other);
     String & operator=(const String &other);
+    String operator[] (int index) const;
 
     ~String();
 
-    const void print();
+    void print() const;
 
     void append(String &other);
 

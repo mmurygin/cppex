@@ -47,7 +47,7 @@ String & String::operator=(const String &other) {
     return *this;
 }
 
-const void String::print() {
+void String::print() const {
     std::cout << "Length: " << this->size << ", Content: "
         << this->str << std::endl;
 }
@@ -62,4 +62,8 @@ void String::append(String &other) {
     delete [] this->str;
     this->size = newSize;
     this->str = newStr;
+}
+
+String operator[] (int index) const {
+
 }
