@@ -3,7 +3,7 @@
 #include <iostream>
 #include "str.h"
 
-    String::String(const char *str)
+String::String(const char *str)
 {
     this->size = strlen(str);
     this->str = new char[this->size + 1];
@@ -64,6 +64,38 @@ void String::append(String &other) {
     this->str = newStr;
 }
 
-String operator[] (int index) const {
+String::Proxy::Proxy(const char * str, int cut_from_index)
+        : cut_from_index(cut_from_index) {
 
+    size = strlen(str) - cut_from_index;
+    this->str = new char[size + 1];
+
+    for (unsigned i = 0; i <= size; i++) {
+        this->str[i] = str[i + cut_from_index];
+    }
+
+    this->str[size] = '\0';
+}
+
+String::Proxy::Proxy(const Proxy & other) {
+    cut_from_index = other.cut_from_index;
+    size = other.size;
+    str = new char[size + 1];
+    strcpy(str, other.str);
+}
+
+String::Proxy::~Proxy() {
+    delete [] str;
+}
+
+String String::Proxy::operator [] (int index) const {
+    String other = String(this->str);
+
+    while (index < size) {
+        /*code*/
+    }
+}
+
+String::Proxy String::operator[] (int index) const {
+    return Proxy(str, index);
 }

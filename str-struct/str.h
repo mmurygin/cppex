@@ -1,14 +1,29 @@
 #pragma once
 
-#include <cstddef> // size_t
+#include <cstddef>
 
 struct String {
-    explicit String(const char *str = "");
+    String(const char *str = "");
 
     String(size_t n, char c);
     String(const String & other);
+
+    struct Proxy
+    {
+        Proxy(const char *str, int cut_from_index);
+
+        Proxy(const Proxy &other);
+
+        ~Proxy();
+
+        String operator[](int index) const;
+        char * str;
+        size_t size;
+        int cut_from_index;
+    };
+
     String & operator=(const String &other);
-    String operator[] (int index) const;
+    Proxy operator[] (int index) const;
 
     ~String();
 
