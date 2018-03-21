@@ -70,7 +70,7 @@ String::Proxy::Proxy(const char * str, int cut_from_index)
     size = strlen(str) - cut_from_index;
     this->str = new char[size + 1];
 
-    for (unsigned i = 0; i <= size; i++) {
+    for (unsigned i = 0; i < size; i++) {
         this->str[i] = str[i + cut_from_index];
     }
 
@@ -88,14 +88,11 @@ String::Proxy::~Proxy() {
     delete [] str;
 }
 
-String String::Proxy::operator [] (int index) const {
-    String other = String(this->str);
-
-    while (index < size) {
-        /*code*/
-    }
+String String::Proxy::operator [] (int index) {
+    str[index - cut_from_index] = '\0';
+    return String(str);
 }
 
-String::Proxy String::operator[] (int index) const {
-    return Proxy(str, index);
+String::Proxy String::operator[] (int fromIndex) const {
+    return Proxy(str, fromIndex);
 }

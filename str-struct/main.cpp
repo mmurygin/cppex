@@ -13,9 +13,6 @@ int main() {
     String str3 = String(str2);
     str3.print();
 
-    String str4 = String();
-    str4.print();
-
     String const hello("hello");
     String const hell = hello[0][4];
     hell.print();

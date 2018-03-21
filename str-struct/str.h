@@ -16,14 +16,14 @@ struct String {
 
         ~Proxy();
 
-        String operator[](int index) const;
+        String operator[](int fromIndex);
         char * str;
         size_t size;
         int cut_from_index;
     };
 
     String & operator=(const String &other);
-    Proxy operator[] (int index) const;
+    Proxy operator[] (int toIndex) const;
 
     ~String();
 
