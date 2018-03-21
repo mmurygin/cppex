@@ -3,7 +3,7 @@
 #include "expression.h"
 #include "visitor.h"
 
-struct Number : IExpression {
+struct Number : Expression {
     explicit Number(double value);
 
     double evaluate() const;

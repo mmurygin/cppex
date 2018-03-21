@@ -1,6 +1,6 @@
 #include "binary-operation.h"
 
-BinaryOperation::BinaryOperation(IExpression const * left, char operand, IExpression const * right)
+BinaryOperation::BinaryOperation(Expression const * left, char operand, Expression const * right)
     : left_(left), operand_(operand), right_(right) { }
 
 
@@ -24,8 +24,8 @@ double BinaryOperation::evaluate() const {
     }
 }
 
-IExpression const * BinaryOperation::get_left() const { return left_; }
-IExpression const * BinaryOperation::get_right() const { return right_; }
+Expression const * BinaryOperation::get_left() const { return left_; }
+Expression const * BinaryOperation::get_right() const { return right_; }
 char BinaryOperation::get_op() const { return operand_; }
 
 void BinaryOperation::visit(IVisitor *visitor) const { visitor->visitBinaryOperation(this); }

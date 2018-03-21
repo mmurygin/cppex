@@ -2,8 +2,8 @@
 
 struct IVisitor;
 
-struct IExpression {
+struct Expression {
     virtual double evaluate() const = 0;
     virtual void visit(IVisitor * visitor) const = 0;
-    virtual ~IExpression() {}
+    virtual ~Expression() {}
 };
