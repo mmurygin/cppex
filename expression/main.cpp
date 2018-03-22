@@ -4,6 +4,7 @@
 #include "number.h"
 #include "print-visitor.h"
 #include "scoped-ptr.h"
+#include "shared-ptr.h"
 
 using namespace std;
 
@@ -25,6 +26,16 @@ int main() {
         ScopedPtr ptr(new Number(8));
         Expression * released = ptr.release();
         cout << released->evaluate() << endl;
+    }
+
+    {
+        Number * n = new Number(10);
+        SharedPtr ptr(n);
+        {
+            SharedPtr ptr2 = ptr;
+        }
+        SharedPtr ptr3(ptr);
+
     }
 
     return 0;
