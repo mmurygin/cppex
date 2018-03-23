@@ -2,11 +2,7 @@
 
 SharedPtr::SharedPtr(Expression *ptr)
     : ptr_(ptr) {
-    if (ptr_) {
-        counter_ = new unsigned(1);
-    } else {
-        counter_ = 0;
-    }
+    counter_ = ptr ? new unsigned(1) : 0;
 }
 
 SharedPtr::SharedPtr(const SharedPtr & other)
@@ -28,11 +24,7 @@ SharedPtr & SharedPtr::operator = (const SharedPtr &other) {
         return *this;
     }
 
-    if (counter_ && (--*counter_ == 0))
-    {
-        delete counter_;
-        delete ptr_;
-    }
+    this->~SharedPtr();
 
     ptr_ = other.ptr_;
     counter_ = other.counter_;
@@ -51,17 +43,11 @@ Expression *SharedPtr::get() const
 
 void SharedPtr::reset(Expression *ptr)
 {
-    if (counter_ && (--*counter_ == 0))
-    {
-        delete ptr_;
-        delete counter_;
-    }
+    this->~SharedPtr();
 
     ptr_ = ptr;
 
-    if (ptr_) {
-        counter_ = new unsigned(1);
-    }
+    counter_ = ptr ? new unsigned(1) : 0;
 }
 
 Expression &SharedPtr::operator*() const
